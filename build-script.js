@@ -8,10 +8,8 @@ const concat = require('concat');
         './dist/pw/polyfills.js',
         './dist/pw/main.js'
     ]
-    
     await fs.ensureDir('elements')
-    
-    await concat(files, 'elements/rwpay.js')
+    await concat(files, 'elements/pages.js')
     console.info('Elements created successfully!')
 
 })()
