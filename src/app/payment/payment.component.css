@@ -18,9 +18,9 @@ aside {
     color: #303030;
 }
 
-button {
+/* button {
     margin: 5px;
-    /* border: 1px rgb(158, 158, 158) dashed; */
+    border: 1px rgb(158, 158, 158) dashed;
     font-size: 1.3em;
     cursor: pointer;
     width: 40%;
@@ -32,7 +32,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
+} */
 
 .red {background-color: #f44336;}
 .green {background-color: #4CAF50;}
@@ -231,16 +231,3 @@ button {
     }
   }
 
-
-  .bg-red {
-    background-color: #d9534f !important;
-  }
-
-  .bg-green {
-    background-color: #5cb85c  !important;
-  }
-
-  .about {
-      font-size: 0.85em;
-      color: #838383;
-  }
