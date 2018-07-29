@@ -6,13 +6,20 @@ import { createCustomElement } from '@angular/elements';
 import {MatButtonModule} from '@angular/material';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { ApiService } from './api/api.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
-    WelComeComponent
+    WelComeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
+    HttpClientModule,
+    // AppRoutingModule,
     BrowserModule,
     MatButtonModule,
     MatDialogModule,
@@ -34,6 +41,7 @@ export class AppModule {
     //TODO: submit login, register form as you normally do in angular with any skills you got in angular.
     
     const el = createCustomElement(WelComeComponent, { injector: this.injector });
+    // el.setAttribute('state', 'init');
     customElements.define('yego-welcome', el);
    }
 }

@@ -9,6 +9,7 @@ const concat = require('concat');
         './dist/pw/main.js'
     ]
     await fs.ensureDir('elements')
+    
     await concat(files, 'elements/pages.js')
     console.info('Elements created successfully!')
 

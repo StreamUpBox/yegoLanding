@@ -9,7 +9,7 @@
     "build:elements": "ng build --prod --output-hashing=none && node build-script.js",
     "start": "ng serve",
     "build": "ng build --prod --output-hashing=none",
-    "package": "cat dist/pw/{runtime,polyfills,scripts,main}.js | gzip > rwpay.js.gz",
+    "package": "cat dist/pw/{runtime,polyfills,main}.js | gzip > rwpay.js.gz",
     "serve": "http-server --gzip"
   },
   "private": true,
