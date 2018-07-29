@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { WelComeComponent } from './welcome/welComeComponent';
 import { createCustomElement } from '@angular/elements';
 import {MatButtonModule} from '@angular/material';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import { ApiService } from './api/api.service';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dia
     MatDialogModule,
     BrowserAnimationsModule
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},ApiService],
   entryComponents: [WelComeComponent],
   bootstrap: []
 })
