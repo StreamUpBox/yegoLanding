@@ -13,11 +13,10 @@ export class WelComeComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private api: ApiService) { }
 
-  @Input('state')
+  @Input('state') // TODO: keep this here I am still experimenting the the input stuff on angular elements but for our case you do not need it anyway!
   set state(state: string) {
     console.debug('client-a received state', state);
   }
-
 
 
   ngOnInit() {

@@ -9,6 +9,8 @@ import { ApiService } from './api/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from './app.routing';
+
 
 
 @NgModule({
@@ -19,7 +21,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     HttpClientModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     BrowserModule,
     MatButtonModule,
     MatDialogModule,
@@ -45,3 +47,6 @@ export class AppModule {
     customElements.define('yego-welcome', el);
    }
 }
+
+//  cp -rf  pw/elements/ /var/www/revo/public/ // TODO: copy element where you want to use them, in my example I had laravel project so I copied in public so that I can call element in .blade.php like: <yego-welcome></yego-welcome> and include in header the javascript copied in public
+// TODO: create a fresh laravel project to work with 
