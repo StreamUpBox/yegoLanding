@@ -1,6 +1,6 @@
 {
   "name": "pw",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "test": "ng test",
@@ -10,7 +10,8 @@
     "start": "ng serve",
     "build": "ng build --prod --output-hashing=none",
     "package": "cat dist/pw/{runtime,polyfills,main}.js | gzip > rwpay.js.gz",
-    "serve": "http-server --gzip"
+    "serve": "http-server --gzip",
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {
