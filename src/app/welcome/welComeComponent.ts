@@ -6,7 +6,7 @@ import { ApiService } from '../api/api.service';
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  encapsulation: ViewEncapsulation.Native,
+  // encapsulation: ViewEncapsulation.Native,
   providers: [ApiService]
 })
 export class WelComeComponent implements OnInit {
