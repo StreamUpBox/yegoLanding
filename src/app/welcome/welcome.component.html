@@ -20,8 +20,8 @@
                                 <li><a href="#">Features</a></li>
                                 <li><a href="#">Pricing </a></li>
                             </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">Login </a></li>
+                            <ul class="nav navbar-nav navbar-right text-dark">
+                                <li><a routerLink="/authorization">Login </a></li>
                                 <li><a href="#">Sign Up</a></li>
                             </ul>
                         </div>
@@ -39,11 +39,20 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-sm-pull-6">
                             <div class="ybx-box">
+                                    <ul class="nav navbar-nav navbar-right text-dark">
+                                          
+                                            <li>
+                                                    <a routerLink="/sign-up" routerLinkActive="active">Sign Up</a>
+                                            </li>
+                                            <li>
+                                                    <a routerLink="/sign-in" routerLinkActive="active">Sign In</a>
+                                            </li>
+                                        </ul>
                                 <h1 class="ybx-title">It matters to Organize your Work</h1>
                                 <p>YegoBox's file storage help you store your files, 
                                     host your e-commerce on the cloud in no time</p>
                                 <div class="clearfix"></div>
-                                <a href="#" class="btn btn-gt-strt btn-dm"> GET STARTED FREE</a>
+                                <a routerLink="/sign-up" routerLinkActive="active" class="btn btn-gt-strt btn-dm"> GET STARTED FREE</a>
                             </div>
                             
                         </div>
