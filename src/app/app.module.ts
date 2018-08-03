@@ -36,8 +36,10 @@ export class AppModule {
 
   }
   ngDoBootstrap() {
-    const el = createCustomElement(WelComeComponent, { injector: this.injector });
+    const welcome = createCustomElement(WelComeComponent, { injector: this.injector });
+    const login = createCustomElement(WelComeComponent, { injector: this.injector });
     // el.setAttribute('state', 'init');
-    customElements.define('yego-welcome', el);
+    customElements.define('yego-welcome', welcome);
+    customElements.define('yego-login', welcome);
    }
 }
