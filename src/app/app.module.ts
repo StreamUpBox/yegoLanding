@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { WelComeComponent } from './welcome/welComeComponent';
-import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
-import { ApiService } from './api/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -17,8 +15,9 @@ import { EmailVerifyComponent } from './login/email-verify/email-verify.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WebStorageModule } from 'ngx-store';
 import { AuthGuard } from './auth.guard';
-import { AuthService } from './service/auth-service.service';
 import { BoxComponent } from './box/box.component';
+import { AuthService } from './service/auth-service';
+import { SendResetPassLinkComponent } from './reset-password/send-reset-pass-link.component';
 @NgModule({
   declarations: [
     WelComeComponent,
@@ -28,7 +27,8 @@ import { BoxComponent } from './box/box.component';
     PageNotFoundComponent,
     EmailVerifyComponent,
     PasswordVerifyComponent,
-    BoxComponent
+    BoxComponent,
+    SendResetPassLinkComponent
   ],
   imports: [
     HttpClientModule,
@@ -48,11 +48,4 @@ export class AppModule {
   constructor() {
 
   }
-  // ngDoBootstrap() {
-  //   const welcome = createCustomElement(WelComeComponent, { injector: this.injector });
-  //   const login = createCustomElement(WelComeComponent, { injector: this.injector });
-  //   // el.setAttribute('state', 'init');
-  //   customElements.define('yego-welcome', welcome);
-  //   customElements.define('yego-login', welcome);
-  //  }
 }

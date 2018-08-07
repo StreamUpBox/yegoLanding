@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import * as $ from 'jquery';
-import { AuthService } from './service/auth-service.service';
 import { Router } from '../../node_modules/@angular/router';
+import { AuthService } from './service/auth-service';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +16,8 @@ export class AppComponent implements OnInit {
     }
 
   constructor(public dialog: MatDialog, private auth: AuthService, private router: Router) {
-    // if (this.auth.isLoggednIn()) {
-    //     this.router.navigate([this.auth.getRedirectUrl()]);
-    // }
+    if (this.auth.isLoggednIn()) {
+        this.router.navigate([this.auth.getRedirectUrl()]);
+    }
    }
 }

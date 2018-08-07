@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 
 
 import {Router} from '@angular/router';
-import { AuthService } from './service/auth-service.service';
+import { AuthService } from './service/auth-service';
 
 @Injectable({ providedIn: 'root' })
 
@@ -26,12 +26,12 @@ export class AuthGuard implements CanActivate  {
 
     if (this.auth.isLoggednIn()) {
       const url: string = state.url;
-      this.auth.redirectUrl = url;
+      this.auth.redirect_url = url;
       this. auth.setRedirectUrl(url);
       return true;
 
     } else {
-      this.myRoute.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+      this.myRoute.navigate(['sign-in'], { queryParams: { redirect: state.url }});
       return false;
 
     }

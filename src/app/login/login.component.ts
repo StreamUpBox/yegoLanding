@@ -15,12 +15,14 @@ export class LoginComponent  implements OnInit {
   @Output() action = new EventEmitter<any>();
   user = {};
   next_step = false;
+  rest_password = false;
   checkChanges($event)  {
     if (!$event.next_step) {
       this.action.emit($event);
     } else {
       this.user = $event.user;
       this.next_step = $event.next_step;
+      this.rest_password = $event.rest_password;
     }
   }
 

@@ -71,6 +71,9 @@ export class ApiService {
   }
 
   encrypt(value) {
+    if (value === null || value === undefined) {
+      return false;
+      }
     return CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(value), this.encrpty_key,
         {
             keySize: 128 / 8,
@@ -81,6 +84,9 @@ export class ApiService {
   }
 
   decrypt(encrypted) {
+    if (encrypted === null || encrypted === undefined) {
+    return false;
+    }
     return CryptoJS.AES.decrypt(encrypted, this.encrpty_key, {
       keySize: 128 / 8,
       iv: this.encrpty_iv,

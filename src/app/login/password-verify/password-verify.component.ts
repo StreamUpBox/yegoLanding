@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material';
 import { ApiService } from 'src/app/api/api.service';
 import { SessionStorage, WebstorableArray, LocalStorage } from 'ngx-store';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../service/auth-service.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../service/auth-service';
 @Component({
   selector: 'app-password-verify',
   templateUrl: './password-verify.component.html',
@@ -19,6 +19,7 @@ export class PasswordVerifyComponent implements OnInit {
   @Input() user;
   @Output() valueChange  = new EventEmitter<any>();
  loading = false;
+ checked = false;
  response = {};
  error_msg = '';
  error_errors = [];
@@ -36,28 +37,30 @@ export class PasswordVerifyComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.auth.redirectUrl = this.route.snapshot.queryParams['returnUrl'] || '/box';
+    this.auth.redirect_url = this.route.snapshot.queryParams['redirect'] || '/box';
   }
 
   handle() {
     this.clicksCt++;
     this.valueChange.emit(this.clicksCt);
   }
-
+resetPassword() {
+  this.response = {user: this.user, next_step: false, rest_password: true };
+                this.valueChange.emit(this.response);
+}
   PasswordVerify() {
     this.error_msg = '';
     this.loading = true;
     this.response = [];
-    const data = {email: this.user.email, password: this.form.value.password, remember: false};
+    const data = {email: this.user.email, password: this.form.value.password, remember: this.checked};
     this.api.passwordVerifying(data, this.user.auth_token).subscribe(res => {
       this.loading = false;
       if (res) {
       const user_ = {id: 2, e_unique: this.api.encrypt(res['email']).toString(), u_avatar: this.api.encrypt(res['avatar_url']).toString() };
       this.u_page.push(user_);
         this.valueChange.emit(this.response);
-        console.log(this.user.auth_token);
        if (this.auth.sendToken(this.user.auth_token)) {
-        this.router.navigate([ this.auth.redirectUrl]);
+        this.router.navigate([this.auth.redirect_url]);
        }
       }
     }, _error => {

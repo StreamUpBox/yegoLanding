@@ -5,7 +5,7 @@ import { ApiService } from '../api/api.service';
 @Injectable({ providedIn: 'root' })
 
 export class AuthService {
- redirectUrl = '';
+ redirect_url = '';
   constructor(private myRoute: Router, private api: ApiService) { }
 
   sendToken(token: string) {
@@ -30,16 +30,18 @@ export class AuthService {
   }
 
   isLoggednIn() {
-    return this.getToken() !== null;
+    return localStorage.getItem('auth_token') !== null;
 
   }
 
+
   logout() {
-    console.log(this.getToken());
     this.api.logout(this.getToken()).subscribe(res => {
-      console.log(res);
-      localStorage.removeItem('auth_token');
-    this.myRoute.navigate(['login']);
+      if (res) {
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('redirect_url');
+        this.myRoute.navigate(['sign-in']);
+      }
     }, _error => {
       console.log(_error);
     });
