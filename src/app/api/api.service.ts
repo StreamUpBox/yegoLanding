@@ -24,17 +24,17 @@ export class ApiService {
   }};
   }
   emailVerifying(data) {
-    return this.post('http://localhost:8000/api/auth/user_verify', data);
+    return this.post(environment.url + '/api/auth/user_verify', data);
   }
 
   passwordVerifying(data, auth_token) {
-    return this.http.post<any>('http://localhost:8000/api/auth/login', data, this.createAuthorizationHeader(auth_token) );
+    return this.http.post<any>(environment.url + '/api/auth/login', data, this.createAuthorizationHeader(auth_token) );
   }
   logout(auth_token) {
-    return this.http.post<any>('http://localhost:8000/api/auth/logout', {logout: true}, this.createAuthorizationHeader(auth_token) );
+    return this.http.post<any>(environment.url + '/api/auth/logout', {logout: true}, this.createAuthorizationHeader(auth_token) );
   }
   sendLinkToResetPassword(data, auth_token) {
-    return this.http.post<any>('http://localhost:8000/api/auth/reset_password', data, this.createAuthorizationHeader(auth_token) );
+    return this.http.post<any>(environment.url + '/api/auth/reset_password', data, this.createAuthorizationHeader(auth_token) );
   }
 
   get(url, token) {
@@ -56,7 +56,7 @@ export class ApiService {
   securePost(data, auth_token) {
     this.headers.set('Accept', 'application/json');
     this.headers.set('Authorization', 'Bearer ' + auth_token);
-    return this.post('http://localhost:8000/api/auth/login', data);
+    return this.post(environment.url + '/api/auth/login', data);
   }
   put(url, data) {
     return this.http.post<any>(url, data, {
