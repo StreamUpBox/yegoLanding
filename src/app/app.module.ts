@@ -12,25 +12,37 @@ import { MaterialModules } from './app.material.module';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found/pagenotfound.component';
-
+import { PasswordVerifyComponent } from './login/password-verify/password-verify.component';
+import { EmailVerifyComponent } from './login/email-verify/email-verify.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WebStorageModule } from 'ngx-store';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './service/auth-service.service';
+import { BoxComponent } from './box/box.component';
 @NgModule({
   declarations: [
     WelComeComponent,
     LoginComponent,
     AppComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmailVerifyComponent,
+    PasswordVerifyComponent,
+    BoxComponent
   ],
   imports: [
     HttpClientModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModules
+    MaterialModules,
+    FormsModule,
+    ReactiveFormsModule,
+    WebStorageModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}]
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}, AuthGuard, AuthService ]
 })
 export class AppModule {
   constructor() {

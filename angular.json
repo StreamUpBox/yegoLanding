@@ -30,7 +30,8 @@
             ],
             "scripts": [
               "node_modules/document-register-element/build/document-register-element.js",
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/crypto-js/crypto-js.js"
             ]
           },
           "configurations": {

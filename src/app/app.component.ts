@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import * as $ from 'jquery';
+import { AuthService } from './service/auth-service.service';
+import { Router } from '../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +16,9 @@ export class AppComponent implements OnInit {
         // throw new Error("Method not implemented.");
     }
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private auth: AuthService, private router: Router) {
+    // if (this.auth.isLoggednIn()) {
+    //     this.router.navigate([this.auth.getRedirectUrl()]);
+    // }
+   }
 }
